@@ -8,14 +8,14 @@ const userReducer = (state = inicialState, action) => {
 
     switch (action.type) {
         case UserActionTypes.LOGIN:
-            return { currentUser: action.payload }
+            return { ...state, currentUser: action.payload }
 
         case UserActionTypes.LOGOUT:
-            return { currentUser: null }
+            return { ...state, currentUser: null }
 
         default:
-          return  state;
+            return state;
     }
 };
 
-export default userReducer;
+export default userReducer; 
