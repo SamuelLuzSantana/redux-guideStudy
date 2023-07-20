@@ -9,6 +9,7 @@ import * as Styles from "./styles";
 
 import {loginUser, logoutUser} from "../../reudx/user/actions"
 import UserActionTypes from "../../reudx/user/action-types"
+import { selectProductsCount } from "../../reudx/cart/cart.selectors";
 
 
 function Header() {
@@ -23,9 +24,8 @@ function Header() {
 
   const dispatch = useDispatch()
 
-  const productsCount = useMemo(() => {
-    return products.reduce((acc, curr)=> acc + curr.quantity, 0)
-  }, [products])
+  const productsCount = useSelector(selectProductsCount)
+
 
   function handleLoginClick() {
     dispatch( loginUser({ name: "Samuel", email: "luz@gmail.com" }))
